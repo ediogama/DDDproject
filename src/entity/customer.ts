@@ -3,7 +3,7 @@ class Customer {
     _id: string;
     _name: string;
     _address: string;
-    _IsActive: boolean = false;
+    _isActive: boolean = false;
 
     constructor(id: string, name: string, address: string) {
         this._id = id;
@@ -31,10 +31,10 @@ class Customer {
         if (this._address.length === 0) {
             throw new Error('Customer address cannot be empty');
         }
-        this._IsActive = true;
+        this._isActive = true;
     }
 
     deactivate() {
-        this._IsActive = false;
+        this._isActive = false;
     }
 }
