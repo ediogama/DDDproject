@@ -1,14 +1,15 @@
+import Address from "./address";
+
 class Customer {
 
     _id: string;
     _name: string;
-    _address: string;
+    _address!: Address;
     _isActive: boolean = false;
 
-    constructor(id: string, name: string, address: string) {
+    constructor(id: string, name: string) {
         this._id = id;
         this._name = name;
-        this._address = address;
         this.validate();
     }
 
@@ -28,7 +29,7 @@ class Customer {
     }
 
     activate() {
-        if (this._address.length === 0) {
+        if (this._address === undefined) {
             throw new Error('Customer address cannot be empty');
         }
         this._isActive = true;
@@ -36,5 +37,9 @@ class Customer {
 
     deactivate() {
         this._isActive = false;
+    }
+
+    set Address(address: Address) {
+        this._address = address;
     }
 }
