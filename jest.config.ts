@@ -3,11 +3,10 @@
  * https://jestjs.io/docs/configuration
  */
 
-import type {Config} from 'jest';
-
-const config: Config = {
+export default {
   transform: {
-    ""
+    "^.+\.(t|j)sx?$": ["@swc/jest"],
+  },
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -197,5 +196,3 @@ const config: Config = {
   // Whether to use watchman for file crawling
   // watchman: true,
 };
-
-export default config;
