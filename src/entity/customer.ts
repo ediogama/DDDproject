@@ -2,10 +2,10 @@ import Address from "./address";
 
 export default class Customer {
 
-    _id: string;
-    _name: string;
-    _address!: Address;
-    _isActive: boolean = false;
+    private _id: string;
+    private _name: string;
+    private _address!: Address;
+    private _active: boolean = false;
 
     constructor(id: string, name: string) {
         this._id = id;
@@ -15,11 +15,11 @@ export default class Customer {
 
     validate() {
         if (this._name.length === 0) {
-            throw new Error('Customer name cannot be empty');
+            throw new Error('Name is required');
         }
 
         if (this._id.length === 0) {
-            throw new Error('Customer id cannot be empty');
+            throw new Error('Id is required');
         }
     }
 
@@ -32,11 +32,11 @@ export default class Customer {
         if (this._address === undefined) {
             throw new Error('Customer address cannot be empty');
         }
-        this._isActive = true;
+        this._active = true;
     }
 
     deactivate() {
-        this._isActive = false;
+        this._active = false;
     }
 
     set Address(address: Address) {
