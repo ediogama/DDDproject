@@ -13,6 +13,10 @@ export default class Customer {
         this.validate();
     }
 
+    get name(): string {
+        return this._name;
+    }
+
     validate() {
         if (this._name.length === 0) {
             throw new Error('Name is required');
@@ -33,6 +37,10 @@ export default class Customer {
             throw new Error('Customer address cannot be empty');
         }
         this._active = true;
+    }
+
+    isActive(): boolean {
+        return this._active;
     }
 
     deactivate() {
