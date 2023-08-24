@@ -26,7 +26,7 @@ describe("Customer unit tests", () => {
     }
   );
 
-  it("should activate customer", () => {
+  it("should activate a customer", () => {
     const customer = new Customer("1", "John");
     const address = new Address("1", "Street 1", "12345", 12345);
     customer.Address = address;
@@ -34,5 +34,28 @@ describe("Customer unit tests", () => {
     customer.activate();
 
     expect(customer.isActive()).toBe(true);
+  });
+
+  it("should throw error when address is undefined and when you activate a customer", () => {
+
+    expect(() => {
+      let customer = new Customer("123", "John");
+      customer.activate();
+    }).toThrowError("Customer address cannot be empty");
+
+});
+
+  it("should activate and deactivate a customer", () => {
+    const customer = new Customer("1", "John");
+    const address = new Address("1", "Street 1", "12345", 12345);
+    customer.Address = address;
+
+    customer.activate();
+
+    expect(customer.isActive()).toBe(true);
+
+    customer.deactivate();
+
+    expect(customer.isActive()).toBe(false);
   });
 });
